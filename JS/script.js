@@ -98,20 +98,18 @@ for(const seatBtn of seatBtns){
                     
                     const ticketPrice = 550;
                     const totalPrice = ticketPrice * seatArr.length ;
-                    setElementValueById('total-price' , totalPrice)
 
                     const inputvalue = getInputValueById('coupon-input') ;
+
                     if(inputvalue === 'NEW15'){
                         const grandTotal = totalPrice * 15 / 100 ;
-                        const finelPrice = totalPrice - grandTotal ;
-                        setElementValueById('grand-price' , finelPrice)
 
                         const dinamicPTag = getElementById('dinamic-p-tag')
                         const dinamicSpan = document.createElement('span') ;
                         dinamicSpan.innerText = 'Discount' ;
                         const dinamicPriceSpan = document.createElement('span') ;
-                        dinamicPriceSpan.innerText = '-' + grandTotal ;
-                        // justify-between items-center font-medium text-[#030712]
+                        dinamicPriceSpan.innerText = ` - ${grandTotal}` ;
+
                         dinamicPTag.classList.add('flex')
                         dinamicPTag.classList.add('justify-between')
                         dinamicPTag.classList.add('items-center')
@@ -127,13 +125,18 @@ for(const seatBtn of seatBtns){
                         const couponBtn = getElementById('apply-btn') ;
                         couponInput.classList.add('hidden') ;
                         couponBtn.classList.add('hidden') ;
-
+                        
                         couponContainer.classList.add('text-center')
                         couponContainer.classList.add('text-[#1DD100]')
-
+                        
                         couponContainer.innerText = "'Congratulations you have success fully submit the Coupon Code ! '" ;
 
-                        couponContainer.appendChild(newPTag) ;
+                        if(inputvalue === 'NEW15'){
+                            const grandTotal = totalPrice * 15 / 100 ;
+                            const finelPrice = totalPrice - grandTotal ;
+                            setElementValueById('grand-price' , finelPrice)
+                            console.log(totalPrice);
+                        }
                     }
                     else if(inputvalue === 'Couple 20'){
                         const grandTotal = totalPrice * 20 / 100 ;
@@ -145,7 +148,7 @@ for(const seatBtn of seatBtns){
                         dinamicSpan.innerText = 'Discount' ;
                         const dinamicPriceSpan = document.createElement('span') ;
                         dinamicPriceSpan.innerText = '-' + grandTotal ;
-                        // justify-between items-center font-medium text-[#030712]
+
                         dinamicPTag.classList.add('flex')
                         dinamicPTag.classList.add('justify-between')
                         dinamicPTag.classList.add('items-center')
@@ -161,13 +164,13 @@ for(const seatBtn of seatBtns){
                         const couponBtn = getElementById('apply-btn') ;
                         couponInput.classList.add('hidden') ;
                         couponBtn.classList.add('hidden') ;
-
+                        console.log(finelPrice);
+                        
                         couponContainer.classList.add('text-center')
                         couponContainer.classList.add('text-[#1DD100]')
-
+                        
                         couponContainer.innerText = "'Congratulations you have success fully submit the Coupon Code ! '" ;
 
-                        couponContainer.appendChild(newPTag) ;
                     }
 
                 })
