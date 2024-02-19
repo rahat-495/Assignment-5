@@ -58,7 +58,11 @@ for(const seatBtn of seatBtns){
                     }
                 }
                 else{
-                    setElementValueById('seat-count' , 0)
+                    const seatCount = getElementValueById('seat-count') ;
+                    const count = seatCount - 1 ;
+                    if(count > 0){
+                        setElementValueById('seat-count' , count)
+                    }
                 }
                 
             }
@@ -67,8 +71,9 @@ for(const seatBtn of seatBtns){
         
         // To handle some Error !
         onerror = () => {
-            const icrement = 40 ;
-            setElementValueById('total-seats' , icrement)
+            const seatsTotal = getElementValueById('total-seats')
+            const increment = seatsTotal + 1 ;
+            setElementValueById('total-seats' , increment)
             seatArr.pop() ;
         }
 
