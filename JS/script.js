@@ -17,16 +17,11 @@ for(const seatBtn of seatBtns){
                 setElementValueById('total-seats' , decrement)
             }
 
-            const seatCount = getElementValueById('seat-count') ;
-            if(seatCount < 4){
-                const seatCount = getElementValueById('seat-count') ;
-                const count = seatCount + 1 ;
-                setElementValueById('seat-count' , count)
-            }
-
+            // Creat dinamic P tags !
             const dinamic = document.getElementById('dinamic-container') ;
             const dinamicChilds = dinamic.childNodes.length ;
             if(dinamicChilds <= 4){
+
                 const dinamic = document.getElementById('dinamic-container') ;
 
                 const ptag = document.createElement('p') ;
@@ -38,7 +33,7 @@ for(const seatBtn of seatBtns){
                 span2.classList.add('ml-10') 
 
                 const span3 = document.createElement('span') ;
-                span3.innerText = 550 ;
+                span3.innerText = parseInt(550) ;
 
                 // P tag styles !
                 ptag.classList.add('flex')
@@ -51,12 +46,26 @@ for(const seatBtn of seatBtns){
                 ptag.appendChild(span2)
                 ptag.appendChild(span3)
 
-                dinamic.appendChild(ptag) ;
-                console.log(e.target.innerText);
+                // To handle some Error !
+                if(span1.innerText.length <= 2){
+                    dinamic.appendChild(ptag) ;
+                    
+                    const seatCount = getElementValueById('seat-count') ;
+                    if(seatCount < 4){
+                        const seatCount = getElementValueById('seat-count') ;
+                        const count = seatCount + 1 ;
+                        setElementValueById('seat-count' , count)
+                    }
+                }
+                else{
+                    setElementValueById('seat-count' , 0)
+                }
+                
             }
             
         }
         
+        // To handle some Error !
         onerror = () => {
             const icrement = 40 ;
             setElementValueById('total-seats' , icrement)
@@ -64,13 +73,67 @@ for(const seatBtn of seatBtns){
         }
 
         if(seatArr.length <= 4){
+
+            // Update the total price !
+            if(seatArr[0].length <= 4 || seatArr.includes(e.target)){
+                const ticketPrice = 550;
+                const totalPrice = ticketPrice * seatArr.length ;
+                setElementValueById('total-price' , totalPrice)
+                const applyBtn = getElementById('apply-btn') ;
+                
+                applyBtn.removeAttribute('disabled') ;
+            }
+
+            if(!e.target.classList.contains('bg-green-500')){
+                document.getElementById('apply-btn').addEventListener('click' , () => {
+                    
+                    const ticketPrice = 550;
+                    const totalPrice = ticketPrice * seatArr.length ;
+                    setElementValueById('total-price' , totalPrice)
+
+                    const inputvalue = getInputValueById('coupon-input') ;
+                    if(inputvalue === 'NEW15'){
+                        const grandTotal = totalPrice * 15 / 100 ;
+                        const finelPrice = totalPrice - grandTotal ;
+                        setElementValueById('grand-price' , finelPrice)
+
+                        const couponContainer = getElementById('coupon-container') ;
+                        couponContainer.classList.add('hidden') ;
+                    }
+                    else if(inputvalue === 'Couple 20'){
+                        const grandTotal = totalPrice * 20 / 100 ;
+                        const finelPrice = totalPrice - grandTotal ;
+                        setElementValueById('grand-price' , finelPrice)
+    
+                        const couponContainer = getElementById('coupon-container') ;
+                        couponContainer.classList.add('hidden') ;
+                    }
+
+                })
+                
+            }
+            
+            // Update the grand total price !
+            if(seatArr[0].length <= 4 || seatArr.includes(e.target)){
+                const ticketPrice = 550;
+                const grandTotal = ticketPrice * seatArr.length
+                setElementValueById('grand-price' , grandTotal)
+            }
+
             setBgColorById(e.target.innerText) ;
+
         }
         else{
-            // alert('You can select only 4 seats !')
             seatArr.pop() ;
         }
 
+        document.getElementById('input-phone').addEventListener('blur' , () => {
+            const numberInput = getInputValueById('input-phone') ;
+            if(!isNaN(numberInput) && numberInput !== ''){
+                const nextBtn = getElementById('next-btn');
+                nextBtn.removeAttribute('disabled')
+            }
+        })
         
 
     })

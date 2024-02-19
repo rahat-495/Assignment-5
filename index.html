@@ -415,9 +415,9 @@
                                     </p>
                                     
                                     <!-- coupon container ! -->
-                                    <div id="" class="mt-4 mb-6 h-[56px] w-[345px] bg-white rounded-xl flex items-center justify-between px-4">
-                                        <input class="bg-transparent h-10 w-3/4 border-none outline-none" placeholder="Have any copupon?" type="text" name="" id="">
-                                        <button class="btn border-none hover:bg-[#1DD100] inter font-semibold bg-[#1DD100] rounded-lg w-[80px] h-[40px] text-white" disabled>Apply</button>
+                                    <div id="coupon-container" class="mt-4 mb-6 h-[56px] w-[345px] bg-white rounded-xl flex items-center justify-between px-4">
+                                        <input class="bg-transparent h-10 w-3/4 border-none outline-none" placeholder="Have any copupon?" type="text" name="" id="coupon-input">
+                                        <button id="apply-btn" class="btn border-none hover:bg-[#1DD100] inter font-semibold bg-[#1DD100] rounded-lg w-[80px] h-[40px] text-white" disabled>Apply</button>
                                     </div>
 
                                     <p id="" class="flex justify-between items-center font-medium text-[#030712]">
@@ -436,16 +436,16 @@
                                 <input type="text" placeholder="Enter your name" class="input input-bordered w-full bg-transparent mb-5" />
 
                                 <h3 class="mb-3 inter font-semibold text-[#030712]">Phone Number :</h3>
-                                <input type="text" placeholder="Enter your phone number" class="input input-bordered w-full bg-transparent mb-5" />
+                                <input id="input-phone" type="text" placeholder="Enter your phone number" class="input input-bordered w-full bg-transparent mb-5" />
 
                                 <h3 class="mb-3 inter font-semibold text-[#030712]">Email ID :</h3>
                                 <input type="text" placeholder="Enter your email id" class="input input-bordered w-full bg-transparent mb-5" />
 
-                                <button class="btn w-full bg-[#1DD100] hover:bg-[#1DD100] rounded-xl text-white border-none mb-5">Next</button>
+                                <button class="btn w-full bg-[#1DD100] hover:bg-[#1DD100] rounded-xl text-white border-none mb-5" id="next-btn" disabled>Next</button>
 
                                 <p class="flex items-center justify-between">
-                                    <a href="#" target="_blank" class="underline cursor-pointer text-[#03071299] inter">Terms and Conditions</a>
-                                    <a href="#" target="_blank" class="underline cursor-pointer text-[#03071299] inter">Cancellation Policy</a>
+                                    <a class="underline cursor-pointer text-[#03071299] inter">Terms and Conditions</a>
+                                    <a class="underline cursor-pointer text-[#03071299] inter">Cancellation Policy</a>
                                 </p>
 
                             </div>

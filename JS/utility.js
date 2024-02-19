@@ -23,3 +23,14 @@ function showElementById (elementId) {
     element.classList.remove('hidden')
 }
 
+function getInputValueById (elementId) {
+    const element = document.getElementById(elementId) ;
+    const value = element.value ;
+    return value ;
+}
+
+function getElementById (elementId) {
+    const element = document.getElementById(elementId) ;
+    return element ;
+}
+
