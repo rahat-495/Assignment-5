@@ -59,9 +59,11 @@ for(const seatBtn of seatBtns){
                 }
                 else{
                     const seatCount = getElementValueById('seat-count') ;
-                    const count = seatCount - 1 ;
-                    if(count > 0){
-                        setElementValueById('seat-count' , count)
+                    onerror = () => {
+                        const count = seatCount - 1 ;
+                        if(count > 0){
+                            setElementValueById('seat-count' , count)
+                        }
                     }
                 }
                 
