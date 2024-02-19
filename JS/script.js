@@ -79,8 +79,10 @@ for(const seatBtn of seatBtns){
                 const ticketPrice = 550;
                 const totalPrice = ticketPrice * seatArr.length ;
                 setElementValueById('total-price' , totalPrice)
+            }
+
+            if(seatArr.length >= 4){
                 const applyBtn = getElementById('apply-btn') ;
-                
                 applyBtn.removeAttribute('disabled') ;
             }
 
@@ -110,6 +112,14 @@ for(const seatBtn of seatBtns){
                     }
 
                 })
+
+                document.getElementById('input-phone').addEventListener('blur' , () => {
+                    const numberInput = getInputValueById('input-phone') ;
+                    if(!isNaN(numberInput) && numberInput !== ''){
+                        const nextBtn = getElementById('next-btn');
+                        nextBtn.removeAttribute('disabled')
+                    }
+                })
                 
             }
             
@@ -127,16 +137,24 @@ for(const seatBtn of seatBtns){
             seatArr.pop() ;
         }
 
-        document.getElementById('input-phone').addEventListener('blur' , () => {
-            const numberInput = getInputValueById('input-phone') ;
-            if(!isNaN(numberInput) && numberInput !== ''){
-                const nextBtn = getElementById('next-btn');
-                nextBtn.removeAttribute('disabled')
-            }
-        })
-        
-
     })
+    
+}
 
+function nextVerdion (){
+    showElementById('success-container') ;
+    hideElementById('sec1')
+    hideElementById('sec2')
+    hideElementById('header')
+    hideElementById('footer')
+}
+
+function continuef (){
+    hideElementById('success-container')
+    showElementById('sec1')
+    showElementById('sec2')
+    showElementById('header')
+    showElementById('footer')
+    window.location.reload() ;
 }
 
