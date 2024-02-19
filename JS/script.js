@@ -140,8 +140,34 @@ for(const seatBtn of seatBtns){
                         const finelPrice = totalPrice - grandTotal ;
                         setElementValueById('grand-price' , finelPrice)
     
+                        const dinamicPTag = getElementById('dinamic-p-tag')
+                        const dinamicSpan = document.createElement('span') ;
+                        dinamicSpan.innerText = 'Discount' ;
+                        const dinamicPriceSpan = document.createElement('span') ;
+                        dinamicPriceSpan.innerText = '-' + grandTotal ;
+                        // justify-between items-center font-medium text-[#030712]
+                        dinamicPTag.classList.add('flex')
+                        dinamicPTag.classList.add('justify-between')
+                        dinamicPTag.classList.add('items-center')
+                        dinamicPTag.classList.add('font-medium')
+                        dinamicPTag.classList.add('text-[#030712]')
+                        dinamicPTag.classList.add('mt-2')
+
+                        dinamicPTag.appendChild(dinamicSpan)
+                        dinamicPTag.appendChild(dinamicPriceSpan)
+
                         const couponContainer = getElementById('coupon-container') ;
-                        couponContainer.classList.add('hidden') ;
+                        const couponInput = getElementById('coupon-input') ;
+                        const couponBtn = getElementById('apply-btn') ;
+                        couponInput.classList.add('hidden') ;
+                        couponBtn.classList.add('hidden') ;
+
+                        couponContainer.classList.add('text-center')
+                        couponContainer.classList.add('text-[#1DD100]')
+
+                        couponContainer.innerText = "'Congratulations you have success fully submit the Coupon Code ! '" ;
+
+                        couponContainer.appendChild(newPTag) ;
                     }
 
                 })
